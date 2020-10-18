@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,6 +30,8 @@ class NewsFragment : Fragment(), NewsAdapter.Listener {
     private lateinit var retrofit: Retrofit
 
 
+
+
     val apiKey : String = "ba88909bbda0454aaa503a8fff5e1225"
     val country : String = "ru"
 
@@ -39,13 +42,10 @@ class NewsFragment : Fragment(), NewsAdapter.Listener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-       recyclerView = view.findViewById(R.id.newsRecycler)
-//        getNews()
-//        recyclerView.layoutManager = LinearLayoutManager(activity)
-//        recyclerView.adapter = NewsAdapter()
 
+       recyclerView = view.findViewById(R.id.newsRecycler)
         getNews()
+
 
     }
 

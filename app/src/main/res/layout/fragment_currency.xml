@@ -1,14 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.CurrencyFragment">
 
-
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="third" />
+        android:layout_height="match_parent">
+
+        <Spinner
+            android:id="@+id/base"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="80dp"
+            android:layout_marginStart="45dp"
+            android:entries="@array/currency"
+            />
+
+        <ImageView
+            android:id="@+id/arrows"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_union_change"
+            app:layout_constraintLeft_toRightOf="@id/base"
+            app:layout_constraintTop_toTopOf="@id/base" />
+
+        <Spinner
+            android:id="@+id/converted"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="16dp"
+            android:entries="@array/currency"
+            app:layout_constraintLeft_toRightOf="@id/arrows"
+            app:layout_constraintTop_toTopOf="@id/base"
+            />
+
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="324dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintTop_toBottomOf="@id/base"
+            app:layout_constraintLeft_toLeftOf="@id/base"/>
+
+        <TextView
+            android:id="@+id/result"
+            android:textAlignment="center"
+            android:padding="12dp"
+            android:textSize="24sp"
+            android:layout_width="324dp"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toBottomOf="@id/input"
+            app:layout_constraintLeft_toLeftOf="@id/input"
+            android:layout_marginTop="40dp"
+            android:textColor="@color/red"
+            />
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/result"
+            app:layout_constraintLeft_toLeftOf="@id/result"
+            android:layout_marginTop="20dp"
+            android:text="Calculate"
+            android:textAllCaps="false"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
 
 </FrameLayout>

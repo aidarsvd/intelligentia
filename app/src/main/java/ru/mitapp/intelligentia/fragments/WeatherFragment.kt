@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_weather.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -59,7 +60,9 @@ class WeatherFragment : Fragment() {
 
         retrofit = ApiFactory.getRetrofit1()
         apiInterface = retrofit.create(RestApi::class.java)
+
         apiInterface.getWeather(q,appid).enqueue(object : Callback<WeatherResponse>{
+
             override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
                 Toast.makeText(context, "Ошибка запроса", Toast.LENGTH_SHORT).show()
             }
@@ -71,12 +74,13 @@ class WeatherFragment : Fragment() {
                 Log.d("body", response.body().toString())
 
                 if (response.isSuccessful){
+                    test.text = response.body()?.main?.temp.toString()
 //                    var celsius: String = viewModel.getTemp(response.body()?.temp.toString())
-                    Log.d("body", response.body().toString())
+
 
                 }else {
                     Toast.makeText(context, "Ошибка запроса", Toast.LENGTH_SHORT).show()
-                    Log.d("body", response.errorBody().toString())
+
 
                 }
             }
