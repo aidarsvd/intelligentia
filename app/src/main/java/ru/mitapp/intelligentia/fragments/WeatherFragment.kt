@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_weather.*
@@ -18,6 +19,7 @@ import ru.mitapp.intelligentia.adapters.NewsAdapter
 import ru.mitapp.intelligentia.api.ApiFactory
 import ru.mitapp.intelligentia.api.RestApi
 import ru.mitapp.intelligentia.models.NewsResponse
+import ru.mitapp.intelligentia.models.Weather
 import ru.mitapp.intelligentia.models.WeatherResponse
 import ru.mitapp.intelligentia.viewmodels.WeatherViewModel
 
@@ -26,10 +28,13 @@ class WeatherFragment : Fragment() {
 
     private lateinit var apiInterface : RestApi
     private lateinit var retrofit: Retrofit
+    private lateinit var processBar: ProgressBar
+
 
     val viewModel = WeatherViewModel()
     val q : String = "Bishkek"
     val appid : String = "e174a606afeb32e8177dfa2ec35cc85d"
+
 
 
 
@@ -47,12 +52,18 @@ class WeatherFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_weather, container, false)
 
+
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        processBar = progressBar
         getWeather()
+
     }
+
 
 
     fun getWeather(){
@@ -71,22 +82,33 @@ class WeatherFragment : Fragment() {
                 call: Call<WeatherResponse>,
                 response: Response<WeatherResponse>
             ) {
-                Log.d("body", response.body().toString())
-
                 if (response.isSuccessful){
-                    test.text = response.body()?.main?.temp.toString()
-//                    var celsius: String = viewModel.getTemp(response.body()?.temp.toString())
+
+                    degrees.text = response.body()!!.main!!.temp
+                    city.text = response.body()!!.name
+
+
+                    description.text = "test"
+
+                    feels_like.text = "Feels like: ${response.body()!!.main!!.feels_like}"
+                    pressure.text = "Pressure: ${response.body()!!.main!!.pressure}"
+                    humidity.text = "Humidity ${response.body()!!.main!!.humidity}"
+
+                    visibility.text = "Visibility: ${response.body()!!.visibility}"
+
+                    windspeed.text = "Wind speed ${response.body()!!.wind!!.speed}"
+                    winddegrees.text = "Wind degrees: ${response.body()!!.wind!!.deg}"
+
+                    processBar.visibility = View.GONE
 
 
                 }else {
                     Toast.makeText(context, "Ошибка запроса", Toast.LENGTH_SHORT).show()
-
-
                 }
             }
 
         })
 
     }
-    
+
 }

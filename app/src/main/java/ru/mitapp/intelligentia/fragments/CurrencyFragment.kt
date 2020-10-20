@@ -27,7 +27,7 @@ class CurrencyFragment : Fragment() {
     lateinit var q: String
     val compact: String = "ultra"
     val apiKey = "fe4202ff43aacf90dd31"
-    val pref = PreferencesUtils
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +62,6 @@ class CurrencyFragment : Fragment() {
     }
 
     fun getCurrency(){
-
 
         retrofit = ApiFactory.getRetrofit2()
         apiInterface = retrofit.create(RestApi::class.java)

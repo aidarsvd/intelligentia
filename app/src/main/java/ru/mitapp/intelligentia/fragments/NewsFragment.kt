@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,7 @@ class NewsFragment : Fragment(), NewsAdapter.Listener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var apiInterface : RestApi
     private lateinit var retrofit: Retrofit
+    private lateinit var processBar: ProgressBar
 
 
 
@@ -43,7 +45,8 @@ class NewsFragment : Fragment(), NewsAdapter.Listener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-       recyclerView = view.findViewById(R.id.newsRecycler)
+        processBar = view.findViewById(R.id.progressBar)
+        recyclerView = view.findViewById(R.id.newsRecycler)
         getNews()
 
 
@@ -56,6 +59,8 @@ class NewsFragment : Fragment(), NewsAdapter.Listener {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_news, container, false)
     }
+
+
 
 
 
@@ -73,7 +78,7 @@ class NewsFragment : Fragment(), NewsAdapter.Listener {
 
                 if (response.isSuccessful){
                     if (response.body()?.articles != null){
-
+                        processBar.visibility = View.GONE
                         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                         recyclerView.adapter = NewsAdapter(response.body()?.articles!!, this@NewsFragment)
                     }

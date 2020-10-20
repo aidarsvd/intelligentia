@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Intelligentia</string>
-    <!-- TODO: Remove or change this placeholder text -->
 
     <string-array name="currency">
         <item>USD</item>
