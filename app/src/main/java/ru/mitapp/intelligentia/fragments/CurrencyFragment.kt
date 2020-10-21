@@ -54,7 +54,6 @@ class CurrencyFragment : Fragment() {
             var base: String = base.getSelectedItem().toString()
             var tocon: String = converted.getSelectedItem().toString()
             q = "${base}_${tocon}"
-
             getCurrency()
 
         }

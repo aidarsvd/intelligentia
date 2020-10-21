@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import okhttp3.OkHttpClient
@@ -48,6 +49,8 @@ class NewsFragment : Fragment(), NewsAdapter.Listener {
         processBar = view.findViewById(R.id.progressBar)
         recyclerView = view.findViewById(R.id.newsRecycler)
         getNews()
+
+
 
 
     }

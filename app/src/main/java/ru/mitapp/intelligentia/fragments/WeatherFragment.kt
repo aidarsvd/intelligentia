@@ -84,13 +84,17 @@ class WeatherFragment : Fragment() {
             ) {
                 if (response.isSuccessful){
 
-                    degrees.text = response.body()!!.main!!.temp
+                    var celsium = response.body()!!.main!!.temp - 273.15
+
+                    degrees.text = "${celsium.toInt()}°C"
                     city.text = response.body()!!.name
 
 
-                    description.text = "test"
 
-                    feels_like.text = "Feels like: ${response.body()!!.main!!.feels_like}"
+                    var celsium1 = response.body()!!.main!!.feels_like - 273.15
+
+
+                    feels_like.text = "Feels like: ${celsium1.toInt()}°C"
                     pressure.text = "Pressure: ${response.body()!!.main!!.pressure}"
                     humidity.text = "Humidity ${response.body()!!.main!!.humidity}"
 
