@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_currency.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,7 +16,6 @@ import retrofit2.Retrofit
 import ru.mitapp.intelligentia.R
 import ru.mitapp.intelligentia.api.ApiFactory
 import ru.mitapp.intelligentia.api.RestApi
-import ru.mitapp.intelligentia.models.Currency
 import ru.mitapp.intelligentia.models.CurrencyResponse
 import ru.mitapp.intelligentia.utils.PreferencesUtils
 import ru.mitapp.intelligentia.viewmodels.ConvertViewModel
@@ -51,13 +51,16 @@ class CurrencyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val pref = PreferencesUtils
+
 
         btn.setOnClickListener {
+
+
             var base: String = base.getSelectedItem().toString()
             var tocon: String = converted.getSelectedItem().toString()
 
             var inputText: String = input.text.toString()
-            Log.d("body", inputText)
 
             if (definition(base, tocon)){
                 result.text = inputText
@@ -65,6 +68,9 @@ class CurrencyFragment : Fragment() {
                 symbol = "$base/$tocon"
                 getCurrency(base, inputText)
             }
+
+
+
         }
 
     }

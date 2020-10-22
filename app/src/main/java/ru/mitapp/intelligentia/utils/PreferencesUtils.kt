@@ -8,19 +8,19 @@ class PreferencesUtils() {
 
         private lateinit var preferences: SharedPreferences
 
-        val QUERY = ""
+        val I  = 0
         private const val PREFERENCE_NAME = "ru.mitapp.APP_PREF"
 
         fun init(context: Context) {
             preferences = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
         }
 
-        fun setQuerry(query: String){
-            preferences.edit().putString(QUERY, query).apply()
+        fun setIn(i: Int){
+            preferences.edit().putInt("I", i).apply()
         }
 
-        fun getQuerry(): String{
-            return preferences.getString(QUERY, "")!!
+        fun getIn(): Int{
+            return preferences.getInt("I", 0)
         }
 
     }
