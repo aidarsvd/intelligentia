@@ -17,8 +17,8 @@ interface RestApi {
     @GET("data/2.5/weather")
     fun getWeather(@Query("q") q : String, @Query("appid") appid : String) : Call<WeatherResponse>
 
-    @GET("api/v7/convert/")
-    fun getCurrency(@Query("q") q : String, @Query("compact") compact : String,
-                    @Query("apiKey") apiKey : String) : Call<CurrencyResponse>
+
+    @GET("api-v2/forex/latest")
+    fun getCurrency(@Query("symbol", encoded = true) symbol : String, @Query("access_key") access_key : String) : Call<CurrencyResponse>
 
 }

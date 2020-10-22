@@ -1,27 +1,22 @@
 package ru.mitapp.intelligentia.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_weather.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import ru.mitapp.intelligentia.R
-import ru.mitapp.intelligentia.adapters.NewsAdapter
 import ru.mitapp.intelligentia.api.ApiFactory
 import ru.mitapp.intelligentia.api.RestApi
-import ru.mitapp.intelligentia.models.NewsResponse
-import ru.mitapp.intelligentia.models.Weather
 import ru.mitapp.intelligentia.models.WeatherResponse
-import ru.mitapp.intelligentia.viewmodels.WeatherViewModel
+import ru.mitapp.intelligentia.viewmodels.ConvertViewModel
 
 
 class WeatherFragment : Fragment() {
@@ -31,7 +26,7 @@ class WeatherFragment : Fragment() {
     private lateinit var processBar: ProgressBar
 
 
-    val viewModel = WeatherViewModel()
+    val viewModel = ConvertViewModel()
     val q : String = "Bishkek"
     val appid : String = "e174a606afeb32e8177dfa2ec35cc85d"
 

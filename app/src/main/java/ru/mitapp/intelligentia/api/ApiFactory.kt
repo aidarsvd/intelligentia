@@ -37,7 +37,7 @@ object ApiFactory {
 
     fun getRetrofit2(): Retrofit{
         retrofit = Retrofit.Builder()
-            .baseUrl("https://free.currconv.com/")
+            .baseUrl("https://fcsapi.com/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
