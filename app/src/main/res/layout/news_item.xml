@@ -25,6 +25,7 @@
 
 
     <TextView
+        android:fontFamily="@font/nunito_extrabold"
         android:id="@+id/news_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,6 +41,7 @@
         />
 
     <TextView
+        android:fontFamily="@font/nunito"
         android:id="@+id/news_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

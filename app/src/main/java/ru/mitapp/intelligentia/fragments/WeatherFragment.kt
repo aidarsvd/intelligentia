@@ -62,8 +62,6 @@ class WeatherFragment : Fragment() {
 
 
     fun getWeather(){
-
-
         retrofit = ApiFactory.getRetrofit1()
         apiInterface = retrofit.create(RestApi::class.java)
 
@@ -84,6 +82,7 @@ class WeatherFragment : Fragment() {
                     degrees.text = "${celsium.toInt()}°C"
                     city.text = response.body()!!.name
 
+                    status.text = response.body()!!.weather!![0].description
 
 
                     var celsium1 = response.body()!!.main!!.feels_like - 273.15
@@ -94,6 +93,7 @@ class WeatherFragment : Fragment() {
                     humidity.text = "Humidity ${response.body()!!.main!!.humidity}"
 
                     visibility.text = "Visibility: ${response.body()!!.visibility}"
+
 
                     windspeed.text = "Wind speed ${response.body()!!.wind!!.speed}"
                     winddegrees.text = "Wind degrees: ${response.body()!!.wind!!.deg}"

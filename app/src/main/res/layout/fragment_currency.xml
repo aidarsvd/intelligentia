@@ -11,6 +11,8 @@
         android:layout_height="match_parent">
 
         <Spinner
+            android:textAlignment="center"
+            android:fontFamily="@font/nunito"
             android:id="@+id/base"
             android:layout_width="130dp"
             android:layout_height="60dp"
@@ -33,6 +35,8 @@
             app:layout_constraintTop_toTopOf="@id/base" />
 
         <Spinner
+
+            android:textAlignment="center"
             android:id="@+id/converted"
             android:layout_width="130dp"
             android:layout_height="60dp"
@@ -41,10 +45,12 @@
             app:layout_constraintLeft_toRightOf="@id/arrows"
             app:layout_constraintTop_toTopOf="@id/base"
             android:background="@drawable/input_style"
+            android:fontFamily="@font/nunito"
 
             />
 
         <EditText
+            android:fontFamily="@font/nunito_extrabold"
             android:textAlignment="center"
             android:textSize="24sp"
             android:id="@+id/input"
@@ -58,6 +64,7 @@
             app:layout_constraintLeft_toLeftOf="@id/base"/>
 
         <TextView
+            android:fontFamily="@font/nunito_extrabold"
             android:id="@+id/result"
             android:textAlignment="center"
             android:background="@drawable/input_style"
@@ -78,6 +85,8 @@
             app:layout_constraintTop_toBottomOf="@id/result"
             app:layout_constraintLeft_toLeftOf="@id/result"
             android:layout_marginTop="40dp"
+            android:fontFamily="@font/nunito"
+
             android:text="Calculate"
             android:textAllCaps="false"
             android:textColor="@color/black"

@@ -10,3 +10,4 @@ data class Currency (
     @SerializedName("last_changed") var last_changed: String,
     @SerializedName("symbol") var symbol: String
 )
+
